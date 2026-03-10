@@ -1,0 +1,36 @@
+{
+  "type": "object",
+  "title": "OSI Governance Assessment",
+  "properties": {
+    "projectName": {
+      "type": "string",
+      "title": "Project Name",
+      "minLength": 3
+    },
+    "license": {
+      "type": "string",
+      "title": "Open Source License",
+      "enum": ["MIT", "Apache-2.0", "GPL-3.0", "Other"],
+      "default": "MIT"
+    },
+    "otherLicense": {
+      "type": "string",
+      "title": "Please specify license",
+      "options": {
+        "dependencies": {
+          "license": "Other"
+        }
+      }
+    },
+    "isPublic": {
+      "type": "boolean",
+      "title": "Is the repository public?",
+      "format": "checkbox",
+      "default": true
+    }
+  },
+  "required": [
+    "projectName",
+    "license"
+  ]
+}
