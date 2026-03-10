@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+    <style>
+        body { visibility: hidden; }
+        body.ready { visibility: visible; }
+    </style>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@json-editor/json-editor@2.15.2/dist/jsoneditor.min.js" defer></script>
+    <script src="app.js" defer></script>
+</head>
+<body class="ready">
+    <main class="container">
+        <article>
+            <header>
+                <div style="display: flex; justify-content: flex-end;">
+                    <small class="badge">v2026.1</small>
+                </div>
+            </header>
+
+            <div id="editor_holder">
+                <div class="instant-loader">
+                    <p>Preparing...</p>
+                    <progress></progress>
+                </div>
+            </div>
+
+            <footer>
+                <button id="submit-btn">Export Assessment</button>
+            </footer>
+        </article>
+    </main>
+</body>
