@@ -1,0 +1,17 @@
+http://:8080 {
+    root * /usr/share/caddy
+    file_server browse
+
+    handle_path /config/* {
+        root * /var/www/config
+        file_server
+    }
+
+    header {
+        Access-Control-Allow-Origin *
+    }
+
+    log {
+        output stdout
+    }
+}
