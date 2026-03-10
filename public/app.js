@@ -1,52 +1,35 @@
-/**
- * Project Governance Assessment - 2026 Maintainable Version
- */
-let editor;
+let jedison;
 
 async function init() {
-    const holder = document.getElementById('editor_holder');
-
+    const holder = document.querySelector('#editor_holder');
+    
     try {
-        const response = await fetch('/config/schema.json');
-        if (!response.ok) throw new Error(`Schema error: ${response.statusText}`);
+        const response = await fetch('/config/schema_dk.json');
         const schema = await response.json();
 
-        if (schema.title) document.title = schema.title;
+        if (schema.description) {
+            document.getElementById('main-description').textContent = schema.description;
+        }
 
-        holder.innerHTML = '';
-        
-        editor = new JSONEditor(holder, {
-            schema: schema,
-            theme: 'html',
-            disable_collapse: true,
-            disable_edit_json: true,
-            disable_properties: true,
-            show_errors: 'interaction' 
+        // Replicating the official doc pattern
+        jedison = new Jedison.Create({
+            container: holder,
+            // MUST match the CSS version in your HTML
+            theme: new Jedison.ThemeBootstrap5(), 
+            iconLib: 'bootstrap-icons',
+            btnContents: false,
+            schema: schema // Ensure x-format is inside your JSON file
         });
 
     } catch (err) {
-        holder.innerHTML = `<mark>Initialization Error: ${err.message}</mark>`;
+        console.error("Initialization failed:", err);
     }
 }
 
-document.getElementById('submit-btn').addEventListener('click', () => {
-    if (!editor) return;
-
-    const errors = editor.validate();
-    if (errors.length > 0) {
-        alert("The form is incomplete or contains errors. Please check the highlighted fields.");
-        return;
-    }
-
-    const data = editor.getValue();
-    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = Object.assign(document.createElement('a'), {
-        href: url,
-        download: `assessment-${Date.now()}.json`
-    });
-    a.click();
-    URL.revokeObjectURL(url);
-});
+document.getElementById('submit-btn').onclick = () => {
+    const data = jedison.getValue();
+    console.log(data);
+    // ... your export logic
+};
 
 init();

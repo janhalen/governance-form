@@ -1,40 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="da">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loading...</title>
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
-
-    <style>
-        body { visibility: hidden; }
-        body.ready { visibility: visible; }
-    </style>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/@json-editor/json-editor@2.15.2/dist/jsoneditor.min.js" defer></script>
-    <script src="app.js" defer></script>
 </head>
-<body class="ready">
+<body>
+    <header class="branded-header">
+        <p id="main-description"></p>
+    </header>
+
     <main class="container">
-        <article>
-            <header>
-                <div style="display: flex; justify-content: flex-end;">
-                    <small class="badge">v2026.1</small>
-                </div>
-            </header>
-
-            <div id="editor_holder">
-                <div class="instant-loader">
-                    <p>Preparing...</p>
-                    <progress></progress>
-                </div>
-            </div>
-
-            <footer>
-                <button id="submit-btn">Export Assessment</button>
-            </footer>
-        </article>
+        <div id="editor_holder"></div>
+        <button id="submit-btn" class="btn btn-primary mt-3">Eksportér JSON</button>
     </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jedison@latest/dist/umd/jedison.umd.js"></script>
+    <script src="app.js"></script>
 </body>
+</html>

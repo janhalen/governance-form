@@ -1,23 +1,43 @@
-body { padding-top: 2rem; }
+/* 1. Branding Header (Same as before) */
+.branded-header::before {
+    content: "";
+    display: block;
+    height: 100px; 
+    width: 250px;
+    background: url("https://www.os2.eu/web/image/website/1/logo/OS2%20%E2%80%93%20Offentligt%20digitaliseringsf%C3%A6llesskab") no-repeat;
+    background-size: contain;
+}
 
-.badge {
-    background-color: #d1fae5;
-    color: #065f46;
-    padding: 0.2rem 0.6rem;
-    border-radius: 1rem;
+/* 2. Jedison Tab Navigation (The "Secret Sauce") */
+.je-categories-nav {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    border-bottom: 2px solid #ccc;
+    gap: 5px;
+}
+
+.je-categories-nav a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #333;
+    background: #eee;
+    border-radius: 5px 5px 0 0;
+    font-family: sans-serif;
+}
+
+/* Style for the active tab */
+.je-categories-nav .active a {
+    background: #0056b3; /* OS2 Blue-ish */
+    color: white;
     font-weight: bold;
 }
 
-.instant-loader {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 200px;
-    text-align: center;
-}
-
-footer {
-    display: flex;
-    justify-content: flex-end;
+/* 3. Clean Form Layout */
+#editor_holder input, #editor_holder textarea {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 8px;
+    border: 1px solid #ccc;
 }

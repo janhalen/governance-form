@@ -1,0 +1,31 @@
+{
+  "type": "object",
+  "title": "OS2 Governance Form",
+  "x-format": "categories-horizontal",
+  "x-categoriesDefaultLabel": "Basis Information",
+  "properties": {
+    "system_navn": {
+      "type": "string",
+      "title": "System Navn",
+      "description": "Indtast navnet på it-systemet"
+    },
+    "kontakt": {
+      "type": "object",
+      "title": "Kontaktperson",
+      "x-category": "Stamdata",
+      "properties": {
+        "navn": { "type": "string" },
+        "email": { "type": "string", "format": "email" }
+      }
+    },
+    "sikkerhed": {
+      "type": "object",
+      "title": "It-Sikkerhed",
+      "x-category": "Sikkerhed & Jura",
+      "properties": {
+        "risikovurdering": { "type": "boolean", "title": "Er der lavet risikovurdering?" },
+        "data_behandler": { "type": "string", "title": "Databehandler" }
+      }
+    }
+  }
+}
