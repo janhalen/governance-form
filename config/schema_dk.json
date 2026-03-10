@@ -2,30 +2,445 @@
   "type": "object",
   "title": "OS2 Governance Form",
   "x-format": "categories-horizontal",
-  "x-categoriesDefaultLabel": "Basis Information",
+  "x-categoriesDefaultLabel": "Relevans",
   "properties": {
-    "system_navn": {
+    "R1": {
       "type": "string",
-      "title": "System Navn",
-      "description": "Indtast navnet på it-systemet"
+      "title": "Lokal værdi",
+      "description": "Standard: Produktet giver konkret og dokumenterbar værdi for den enkelte myndighed.",
+      "enum": [
+        "🔴 Rød: Kravet er ikke opfyldt, og der er behov for handling.",
+        "🟡 Gul: Kravet er delvist opfyldt, men der er mangler.",
+        "🟢 Grøn: Kravet er fuldt opfyldt og fungerer som forventet."
+      ],
+      "default": "🟡 Gul: Kravet er delvist opfyldt, men der er mangler."
     },
-    "kontakt": {
-      "type": "object",
-      "title": "Kontaktperson",
-      "x-category": "Stamdata",
-      "properties": {
-        "navn": { "type": "string" },
-        "email": { "type": "string", "format": "email" }
-      }
+    "R1_basis": { "type": "string", "title": "Vurderingsgrundlag (Lokal værdi)", "format": "textarea" },
+    "R2": {
+      "type": "string",
+      "title": "Lokal linjeledelse",
+      "description": "Standard: Linjeledelsen har bakket op om deltagelsen i udviklingen og anvendelsen.",
+      "enum": [
+        "🔴 Rød: Kravet er ikke opfyldt, og der er behov for handling.",
+        "🟡 Gul: Kravet er delvist opfyldt, men der er mangler.",
+        "🟢 Grøn: Kravet er fuldt opfyldt og fungerer som forventet."
+      ],
+      "default": "🟡 Gul: Kravet er delvist opfyldt, men der er mangler."
     },
-    "sikkerhed": {
-      "type": "object",
-      "title": "It-Sikkerhed",
-      "x-category": "Sikkerhed & Jura",
-      "properties": {
-        "risikovurdering": { "type": "boolean", "title": "Er der lavet risikovurdering?" },
-        "data_behandler": { "type": "string", "title": "Databehandler" }
-      }
-    }
+    "R2_basis": { "type": "string", "title": "Vurderingsgrundlag (Lokal accept)", "format": "textarea" },
+    "R3": {
+      "type": "string",
+      "title": "Fællesoffentligt potentiale",
+      "description": "Standard: Kan skabe værdi og genbruges på tværs af myndigheder.",
+      "enum": [
+        "🔴 Rød: Kravet er ikke opfyldt, og der er behov for handling.",
+        "🟡 Gul: Kravet er delvist opfyldt, men der er mangler.",
+        "🟢 Grøn: Kravet er fuldt opfyldt og fungerer som forventet."
+      ],
+      "default": "🟡 Gul: Kravet er delvist opfyldt, men der er mangler."
+    },
+    "R3_basis": { "type": "string", "title": "Vurderingsgrundlag (Potentiale)", "format": "textarea" },
+    "R4": {
+      "type": "string",
+      "title": "Nationale strategier",
+      "description": "Standard: Understøtter fx digitaliseringsstrategi og fællesoffentlige mål.",
+      "enum": [
+        "🔴 Rød: Kravet er ikke opfyldt, og der er behov for handling.",
+        "🟡 Gul: Kravet er delvist opfyldt, men der er mangler.",
+        "🟢 Grøn: Kravet er fuldt opfyldt og fungerer som forventet."
+      ],
+      "default": "🟡 Gul: Kravet er delvist opfyldt, men der er mangler."
+    },
+    "R4_basis": { "type": "string", "title": "Vurderingsgrundlag (Strategi)", "format": "textarea" },
+
+    "F1": {
+      "type": "string",
+      "x-category": "Formkrav",
+      "title": "Synlig kildekode i OS2-repo",
+      "description": "Standard: Kodebasen er tilgængelig og udvikles åbent på GitHub i OS2-kontrolleret organisation.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "F1_basis": { "type": "string", "x-category": "Formkrav", "title": "Vurderingsgrundlag (Kildekode)", "format": "textarea" },
+
+    "F2": {
+      "type": "string",
+      "x-category": "Formkrav",
+      "title": "Open Source-licenskriterier",
+      "description": "Standard: Godkendt Open Source Licens (fx MPL-2.0) er tydeligt angivet.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "F2_basis": { "type": "string", "x-category": "Formkrav", "title": "Vurderingsgrundlag (Licens)", "format": "textarea" },
+
+    "F3": {
+      "type": "string",
+      "x-category": "Formkrav",
+      "title": "Udbudsregler og lovformlighed",
+      "description": "Standard: Projektet følger udbudsregler og gældende lovgivning.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "F3_basis": { "type": "string", "x-category": "Formkrav", "title": "Vurderingsgrundlag (Lovformlighed)", "format": "textarea" },
+
+    "F4": {
+      "type": "string",
+      "x-category": "Formkrav",
+      "title": "Sikkerhed i løsningen",
+      "description": "Standard: Der forefindes dokumenteret sikkerhedsarbejde.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "F4_basis": { "type": "string", "x-category": "Formkrav", "title": "Vurderingsgrundlag (Sikkerhed)", "format": "textarea" },
+
+    "F5": {
+      "type": "string",
+      "x-category": "Formkrav",
+      "title": "Formål og værdi beskrevet",
+      "description": "Standard: Formål og værdi er klart beskrevet i README.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "F5_basis": { "type": "string", "x-category": "Formkrav", "title": "Vurderingsgrundlag (Værdi)", "format": "textarea" },
+
+    "F6": {
+      "type": "string",
+      "x-category": "Formkrav",
+      "title": "Overdragelse til OS2 GitHub",
+      "description": "Standard: Koden er juridisk overdraget til OS2.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "F6_basis": { "type": "string", "x-category": "Formkrav", "title": "Vurderingsgrundlag (Overdragelse)", "format": "textarea" },
+
+    "F7": {
+      "type": "string",
+      "x-category": "Formkrav",
+      "title": "OS2 standardskabelon for dokumentation",
+      "description": "Standard: Dokumentation overholder OS2's skabelon.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "F7_basis": { "type": "string", "x-category": "Formkrav", "title": "Vurderingsgrundlag (Dokumentation)", "format": "textarea" },
+
+    "F10": {
+      "type": "string",
+      "x-category": "Formkrav",
+      "title": "Kommunikationskanaler anvendt",
+      "description": "Standard: Information findes på os2.eu.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "F10_basis": { "type": "string", "x-category": "Formkrav", "title": "Vurderingsgrundlag (Kommunikation)", "format": "textarea" },
+
+    "F11": {
+      "type": "string",
+      "x-category": "Formkrav",
+      "title": "Offentlig issue-tracking",
+      "description": "Standard: Opgaver spores offentligt på GitHub.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "F11_basis": { "type": "string", "x-category": "Formkrav", "title": "Vurderingsgrundlag (Issues)", "format": "textarea" },
+
+    "F12": {
+      "type": "string",
+      "x-category": "Formkrav",
+      "title": "Kun én version af core-koden",
+      "description": "Standard: Ingen parallelle versioner af kodebasen.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "F12_basis": { "type": "string", "x-category": "Formkrav", "title": "Vurderingsgrundlag (Master-kode)", "format": "textarea" },
+
+    "F13": {
+      "type": "string",
+      "x-category": "Formkrav",
+      "title": "Præsentationsmateriale udarbejdet",
+      "description": "Standard: Der findes præsentationer om produktet.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "F13_basis": { "type": "string", "x-category": "Formkrav", "title": "Vurderingsgrundlag (Præsentation)", "format": "textarea" },
+
+    "F14": {
+      "type": "string",
+      "x-category": "Formkrav",
+      "title": "Kommunikationsmateriale til strategisk niveau",
+      "description": "Standard: Der findes materialer målrettet ledelse og strategi.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "F14_basis": { "type": "string", "x-category": "Formkrav", "title": "Vurderingsgrundlag (Strategi)", "format": "textarea" },
+
+    "F15": {
+      "type": "string",
+      "x-category": "Formkrav",
+      "title": "Best practice for implementering",
+      "description": "Standard: Vejledninger og erfaringer er beskrevet.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "F15_basis": { "type": "string", "x-category": "Formkrav", "title": "Vurderingsgrundlag (Implementering)", "format": "textarea" },
+
+    "F16": {
+      "type": "string",
+      "x-category": "Formkrav",
+      "title": "Teknisk best practice for kodestandarder",
+      "description": "Standard: Kodestandarder dokumenteret.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "F16_basis": { "type": "string", "x-category": "Formkrav", "title": "Vurderingsgrundlag (Kodestandard)", "format": "textarea" },
+
+    "F17": {
+      "type": "string",
+      "x-category": "Formkrav",
+      "title": "Drifts- og vedligeholdelsessetup",
+      "description": "Standard: Driftmiljø og procedurer beskrevet.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "F17_basis": { "type": "string", "x-category": "Formkrav", "title": "Vurderingsgrundlag (Drift)", "format": "textarea" },
+
+    "F18": {
+      "type": "string",
+      "x-category": "Formkrav",
+      "title": "Rammearkitektur og standarder fulgt",
+      "description": "Standard: Overensstemmelse med rammearkitektur er beskrevet.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "F18_basis": { "type": "string", "x-category": "Formkrav", "title": "Vurderingsgrundlag (Arkitektur)", "format": "textarea" },
+
+    "F19": {
+      "type": "string",
+      "x-category": "Formkrav",
+      "title": "Løsning leveret i containerformat",
+      "description": "Standard: Fx Docker anvendes.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "F19_basis": { "type": "string", "x-category": "Formkrav", "title": "Vurderingsgrundlag (Container)", "format": "textarea" },
+
+    "F20": {
+      "type": "string",
+      "x-category": "Formkrav",
+      "title": "Uddannelsesmateriale udarbejdet",
+      "description": "Standard: Undervisningsmaterialer findes.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "F20_basis": { "type": "string", "x-category": "Formkrav", "title": "Vurderingsgrundlag (Uddannelse)", "format": "textarea" },
+
+    "F21": {
+      "type": "string",
+      "x-category": "Formkrav",
+      "title": "Politisk kommunikation udarbejdet",
+      "description": "Standard: Materialer målrettet politikere.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "F21_basis": { "type": "string", "x-category": "Formkrav", "title": "Vurderingsgrundlag (Politik)", "format": "textarea" },
+
+    "F22": {
+      "type": "string",
+      "x-category": "Formkrav",
+      "title": "Procesplan og procesansvar for drift",
+      "description": "Standard: Dokumenteret proces og ansvar.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "F22_basis": { "type": "string", "x-category": "Formkrav", "title": "Vurderingsgrundlag (Ansvar)", "format": "textarea" },
+
+    "S1": {
+      "type": "string",
+      "x-category": "Strategisk sammenhæng",
+      "title": "Produktet har kobling til OS2's strategi",
+      "description": "Standard: Understøtter OS2’s mission og vision.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "S1_basis": { "type": "string", "x-category": "Strategisk sammenhæng", "title": "Vurderingsgrundlag (S1)", "format": "textarea" },
+
+    "S2": {
+      "type": "string",
+      "x-category": "Strategisk sammenhæng",
+      "title": "Løsningen understøtter innovation og open source",
+      "description": "Standard: Fremmer innovation og åbenhed.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "S2_basis": { "type": "string", "x-category": "Strategisk sammenhæng", "title": "Vurderingsgrundlag (S2)", "format": "textarea" },
+
+    "S3": {
+      "type": "string",
+      "x-category": "Strategisk sammenhæng",
+      "title": "Kobling til OS2's mission, vision og strategi er beskrevet",
+      "description": "Standard: Forbindelsen er formelt beskrevet.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "S3_basis": { "type": "string", "x-category": "Strategisk sammenhæng", "title": "Vurderingsgrundlag (S3)", "format": "textarea" },
+
+    "S4": {
+      "type": "string",
+      "x-category": "Strategisk sammenhæng",
+      "title": "Vision og strategi for produktet er udarbejdet",
+      "description": "Standard: Der findes en formel vision og strategi for produktet.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "S4_basis": { "type": "string", "x-category": "Strategisk sammenhæng", "title": "Vurderingsgrundlag (S4)", "format": "textarea" },
+
+    "S5": {
+      "type": "string",
+      "x-category": "Strategisk sammenhæng",
+      "title": "Produktets overensstemmelse med OS2's vision og strategi",
+      "description": "Standard: Tydelig sammenhæng og beskrivelse af bidrag.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "S5_basis": { "type": "string", "x-category": "Strategisk sammenhæng", "title": "Vurderingsgrundlag (S5)", "format": "textarea" },
+
+    "G1": {
+      "type": "string",
+      "x-category": "Governance",
+      "title": "Produktet er oprettet i OS2's porteføljestyring",
+      "description": "Standard: Findes i OS2’s porteføljedatabase, hjemmeside og årshjul.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "G1_basis": { "type": "string", "x-category": "Governance", "title": "Vurderingsgrundlag (G1)", "format": "textarea" },
+
+    "G2": {
+      "type": "string",
+      "x-category": "Governance",
+      "title": "Der koordineres løbende med OS2-sekretariatet",
+      "description": "Standard: Der er løbende kontakt med sekretariatet.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "G2_basis": { "type": "string", "x-category": "Governance", "title": "Vurderingsgrundlag (G2)", "format": "textarea" },
+
+    "G3": {
+      "type": "string",
+      "x-category": "Governance",
+      "title": "Projektleder/tovholder er udpeget",
+      "description": "Standard: Der er udpeget en fast kontaktperson/koordinator.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "G3_basis": { "type": "string", "x-category": "Governance", "title": "Vurderingsgrundlag (G3)", "format": "textarea" },
+
+    "G4": {
+      "type": "string",
+      "x-category": "Governance",
+      "title": "Bestyrelsen er orienteret",
+      "description": "Standard: Bestyrelsen kender til projektet.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "G4_basis": { "type": "string", "x-category": "Governance", "title": "Vurderingsgrundlag (G4)", "format": "textarea" },
+
+    "G5": {
+      "type": "string",
+      "x-category": "Governance",
+      "title": "Bestyrelsen har godkendt produktet",
+      "description": "Standard: Formelt godkendt i referater.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "G5_basis": { "type": "string", "x-category": "Governance", "title": "Vurderingsgrundlag (G5)", "format": "textarea" },
+
+    "G6": {
+      "type": "string",
+      "x-category": "Governance",
+      "title": "Der er nedsat en styregruppe",
+      "description": "Standard: Der findes en aktiv styregruppe.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "G6_basis": { "type": "string", "x-category": "Governance", "title": "Vurderingsgrundlag (G6)", "format": "textarea" },
+
+    "G7": {
+      "type": "string",
+      "x-category": "Governance",
+      "title": "Der er nedsat en koordinationsgruppe",
+      "description": "Standard: Der findes en aktiv koordinationsgruppe.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "G7_basis": { "type": "string", "x-category": "Governance", "title": "Vurderingsgrundlag (G7)", "format": "textarea" },
+
+    "G8": {
+      "type": "string",
+      "x-category": "Governance",
+      "title": "Projektmodel anvendes og dokumenteret (anbefaling)",
+      "description": "Standard: Der arbejdes efter en dokumenteret projektmodel.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "G8_basis": { "type": "string", "x-category": "Governance", "title": "Vurderingsgrundlag (G8)", "format": "textarea" },
+
+    "G9": {
+      "type": "string",
+      "x-category": "Governance",
+      "title": "Review af kode foretages af tredjepart (anbefaling)",
+      "description": "Standard: Uafhængig kodegennemgang gennemføres.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "G9_basis": { "type": "string", "x-category": "Governance", "title": "Vurderingsgrundlag (G9)", "format": "textarea" },
+
+    "G10": {
+      "type": "string",
+      "x-category": "Governance",
+      "title": "Tilslutningserklæring til sikring af økonomi (anbefaling)",
+      "description": "Standard: OS2-tilslutningsaftale findes og er effektueret.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "G10_basis": { "type": "string", "x-category": "Governance", "title": "Vurderingsgrundlag (G10)", "format": "textarea" },
+
+    "G11": {
+      "type": "string",
+      "x-category": "Governance",
+      "title": "Bestyrelsen har godkendt styregruppen",
+      "description": "Standard: Formelt godkendt i referater.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "G11_basis": { "type": "string", "x-category": "Governance", "title": "Vurderingsgrundlag (G11)", "format": "textarea" },
+
+    "G12": {
+      "type": "string",
+      "x-category": "Governance",
+      "title": "Bestyrelsen er repræsenteret i styregruppen",
+      "description": "Standard: Bestyrelsesmedlem deltager.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "G12_basis": { "type": "string", "x-category": "Governance", "title": "Vurderingsgrundlag (G12)", "format": "textarea" },
+
+    "G13": {
+      "type": "string",
+      "x-category": "Governance",
+      "title": "Aftale sikrer økonomi til koordinering og videreudvikling",
+      "description": "Standard: Aftaler om finansiering er på plads og budget udarbejdet.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "G13_basis": { "type": "string", "x-category": "Governance", "title": "Vurderingsgrundlag (G13)", "format": "textarea" },
+
+    "G14": {
+      "type": "string",
+      "x-category": "Governance",
+      "title": "Fagligt fællesskab bag løsningen",
+      "description": "Standard: Aktivt fællesskab, fx brugerklub eller forum.",
+      "enum": [ "🔴 Rød: Kravet er ikke opfyldt", "🟡 Gul: Delvist opfyldt", "🟢 Grøn: Fuldt opfyldt" ],
+      "default": "🟡 Gul: Delvist opfyldt"
+    },
+    "G14_basis": { "type": "string", "x-category": "Governance", "title": "Vurderingsgrundlag (G14)", "format": "textarea" }
   }
 }
