@@ -1,0 +1,23 @@
+body { padding-top: 2rem; }
+
+.badge {
+    background-color: #d1fae5;
+    color: #065f46;
+    padding: 0.2rem 0.6rem;
+    border-radius: 1rem;
+    font-weight: bold;
+}
+
+.instant-loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    text-align: center;
+}
+
+footer {
+    display: flex;
+    justify-content: flex-end;
+}
